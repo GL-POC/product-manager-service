@@ -33,8 +33,7 @@ public class ProductManagerServiceApplication extends WebMvcConfigurerAdapter {
 			"1.0", "urn:tos", DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0",
 			new ArrayList<VendorExtension>());
 	
-	private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<>(Arrays.asList(
-			"application/json", "application/xml"));
+	private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<>(Arrays.asList("application/json"));
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProductManagerServiceApplication.class, args);
