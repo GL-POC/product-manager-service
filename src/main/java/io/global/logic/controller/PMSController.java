@@ -1,5 +1,7 @@
 package io.global.logic.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,6 +35,8 @@ public class PMSController {
 	
 	@Autowired
 	private PMSConfig property;
+	
+	Logger logger = LoggerFactory.getLogger(PMSController.class);
 
 	@GetMapping(value = "v1/products/{productId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseProduct> getProductById(@PathVariable String productId){
@@ -44,6 +48,7 @@ public class PMSController {
     @PostMapping(value = "v1/product", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseProduct> createProduct(@RequestBody RequestProduct product){
     	System.out.println(property.getName() + " " + property.getUrl());
+    	logger.info("New product being added {}", product);
     	return ResponseEntity.status(HttpStatus.OK).body(productService.save(product));
     }
 
